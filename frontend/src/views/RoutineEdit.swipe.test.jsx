@@ -20,6 +20,7 @@ import RoutineEdit, { ROUTINE_LONG_PRESS_MS, removeRoutineExercise } from './Rou
 import { DEF, useStore } from '../store/useStore.js'
 import { useUI } from '../store/useUI.js'
 import { closeOpenRow } from '../lib/use-swipe-row.js'
+import { animateOnTestClock } from '../lib/animate-clock.test-util.js'
 
 globalThis.IS_REACT_ACT_ENVIRONMENT = true
 const clone = value => JSON.parse(JSON.stringify(value))
@@ -53,6 +54,8 @@ function swipe(target, x0, x1) {
   act(() => vi.advanceTimersByTime(800))
 }
 const undo = () => act(() => useUI.getState().runToastAction())
+
+animateOnTestClock()
 
 beforeEach(() => {
   vi.useFakeTimers()

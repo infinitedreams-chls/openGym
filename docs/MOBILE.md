@@ -256,6 +256,10 @@ npx @capacitor/assets generate --iconBackgroundColor '#0c0e12' --splashBackgroun
 (If the generator won't take the SVG directly, export it to `resources/icon.png` at
 1024×1024 first — any image tool can do it.)
 
+`npx` fetches the generator when you run it; it is deliberately not a devDependency. Its latest
+release (3.0.5) pins sharp 0.32 and @capacitor/cli 5 (tar 6), which carry unfixed high/critical
+advisories, and it only ever runs by hand on icons you supply.
+
 ## Distribution — deliberately no app stores
 
 openGym's mobile app is not on the Play Store or App Store, and that's a choice: no store

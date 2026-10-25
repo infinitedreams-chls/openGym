@@ -7,6 +7,7 @@ import Workout, { deleteActiveSet, undoDeleteSet, copyActiveSet, removeActiveExe
 import { DEF, useStore } from '../store/useStore.js'
 import { useUI } from '../store/useUI.js'
 import { closeOpenRow } from '../lib/use-swipe-row.js'
+import { animateOnTestClock } from '../lib/animate-clock.test-util.js'
 
 // Swipe on sets (v1.3.11): swipe toward the start removes a set with an Undo, toward the end
 // copies it. These cover the store paths the swipe, the set menu and the Undo share, the guards
@@ -58,6 +59,8 @@ function swipe(target, x0, x1, { dy = 0, pointerType = 'touch', clickAfter = tru
   pointer(target, 'pointerup', x1, 300 + dy, pointerType)
   if (clickAfter) click(target)
 }
+
+animateOnTestClock()
 
 beforeEach(() => {
   vi.useFakeTimers()

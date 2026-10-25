@@ -8,6 +8,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { DEF, useStore } from '../store/useStore.js'
 import { useUI } from '../store/useUI.js'
 import { closeOpenRow } from '../lib/use-swipe-row.js'
+import { animateOnTestClock } from '../lib/animate-clock.test-util.js'
 import { restoreRoutine, routineSnapshot, deleteRoutine } from '../lib/routines.js'
 import Plan, { deleteRoutineWithUndo, takeOutOfLoop } from './Plan.jsx'
 import { chooseFixedWeek, saveRotation, scheduleModeOf } from '../lib/rotation.js'
@@ -56,6 +57,8 @@ function swipe(target, x0, x1) {
   act(() => vi.advanceTimersByTime(800))
 }
 const undo = () => act(() => useUI.getState().runToastAction())
+
+animateOnTestClock()
 
 beforeEach(() => {
   vi.useFakeTimers()
