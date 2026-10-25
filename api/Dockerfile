@@ -11,7 +11,9 @@
 # The stage order matters: Docker builds the *last* stage when none is named, so `default` is
 # deliberately last and `coach` sits above it.
 
-FROM node:22-alpine AS base
+# [SECURITY] Pinned to a patch release, not the moving "22-alpine" tag: the Node.js October 2026 security
+# release (CVE-2026-111497 Brotli RCE + 9 others) is fixed in 22.23.4. A cached older base image stays vulnerable.
+FROM node:22.23.4-alpine AS base
 
 # Declared on the base stage so both targets inherit the labels and the healthcheck.
 ARG VERSION=dev
